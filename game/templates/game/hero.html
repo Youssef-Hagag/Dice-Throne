@@ -1,0 +1,101 @@
+{% extends "game/layout.html" %}
+{% load static %}
+
+{% block head %}
+<script src="{% static 'scripts/game.js' %}"></script>
+<!-- Variables for the script -->
+{{ hero | json_script:"hero"}}
+{{ deck | json_script:"deck"}}
+{{ tokens | json_script:"tokens"}}
+{{ upgrades | json_script:"upgrades"}}
+{{ icons | json_script:"icons"}}
+{{ theme | json_script:"theme"}}
+{{ adjustments | json_script:"adjustments"}}
+
+<title>{{ hero.capitalize }}</title>
+<style>
+    .icon{
+        background-color: {{theme}};
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="hero-container">
+            {% with hero_image=hero|add:".jpg" %}
+                <img class="hero-board" src="{% static 'boards/'|add:hero_image %}" alt="{{hero}}">
+            {% endwith %}
+            <div data-slot = "1" data-level = 1 class="upgrade slot-one"></div>
+            <div data-slot = "2" data-level = 1 class="upgrade slot-two"></div>
+            <div data-slot = "3" data-level = 1 class="upgrade slot-three"></div>
+            <div data-slot = "4" data-level = 1 class="upgrade slot-four"></div>
+            <div data-slot = "5" data-level = 1 class="upgrade slot-five"></div>
+            <div data-slot = "6" data-level = 1 class="upgrade slot-six"></div>
+            <div data-slot = "7" data-level = 1 class="upgrade slot-seven"></div>
+            <div data-slot = "8" data-level = 1 class="upgrade slot-eight"></div>
+            <div data-slot = "9" data-level = 1 class="upgrade slot-nine"></div>
+        </div>
+        
+        <div id="dice-container">
+            <div class="dice selected-dice">6</div>
+            <div class="dice selected-dice">6</div>
+            <div class="dice selected-dice">6</div>
+            <div class="dice selected-dice">6</div>
+            <div class="dice selected-dice">6</div>
+            <button class="roll-dice button"> Roll </button>
+        </div>
+
+        <div id="tokens-container">   
+            <div class="token-container">
+                <label> HP </label>
+                <button data-change="remove" class="change-token button"> - </button>
+                <div data-description = "Health Points, the moment your health is reduced to 0, you have been defeated." data-max = "60" class="token"> 50 </div>
+                <button data-change="add" class="change-token button"> + </button>
+            </div>
+            <div class="token-container">
+                <label> CP </label>
+                <button data-change="remove" class="change-token button"> - </button>
+                <div data-description = "Combat Points, spent primarily to pay for cards, at the start of your turn gain 1. (Except the starting players first turn)." data-max = "15" class="token"> 2 </div>
+                <button data-change="add" class="change-token button"> + </button>
+            </div>
+        </div>
+        
+        <div id="token-info">
+            <div id="token-description"></div>
+            <div id="stack-limit"></div>
+        </div>
+
+        <div id="hand"></div>
+        
+        <div id="deck-pile" class="card">
+            <img src="{% static 'other_images/deck.jpg' %}" alt="Deck">
+        </div>
+        <div id="deck-view" class="enlarge">
+            <h1> Deck </h1> 
+        </div>
+
+        <div id="discard-pile" class="card">
+            <img src="{% static 'other_images/discard.avif' %}" alt="Discard Pile">
+        </div>
+        <div id="discard-view" class="enlarge">
+            <h1> Discard Pile </h1> 
+        </div>
+
+        <div id="upgrade-choice">
+            <select id="slot-choice">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </select>
+            <button class="upgrade-skill button"> Upgrade </button>
+        </div>
+
+    </div>
+{% endblock %}

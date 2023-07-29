@@ -1,0 +1,28 @@
+{% extends "game/layout.html" %}
+{% load static %}
+
+{% block head %}
+<title>Dice Throne</title>
+{% endblock %}
+
+
+{% block body %}
+    <div id="index-container">
+        <h1> Welcome To Dice Throne </h1>
+        <h2> Choose Your Character </h2>
+        <div id="hero-choices">
+            {% for hero in heroes %}
+                {% if hero.name.0 != "_" %} <!--underscore at the start means the hero is unfinished-->
+                    <a href="/hero/{{hero.name}}">
+                        <div class="hero-choice" style="background-color: {{hero.theme}}">
+                            <h1> {{hero.name.capitalize}} </h1>
+                            {% with hero_image=hero.name|add:".avif" %}
+                                <img class="hero-image" src="{% static 'portraits/'|add:hero_image %}" alt="{{hero}}">
+                            {% endwith %}
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
