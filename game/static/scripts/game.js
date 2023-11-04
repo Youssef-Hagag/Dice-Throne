@@ -50,6 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //magnify hero board
     document.querySelector(".hero-board").onclick = function(){
+        if(isTouchDevice())
+        {
+            // Effect is disabled for touch device "they can zoom in instead"
+            return;
+        }
+
         this.classList.toggle("enlarge");
         this.parentElement.classList.toggle("enlarge");
     }
@@ -101,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-    //draw view or shuffle the deck
+    //draw from, view or shuffle the deck
     document.querySelector("#deck-pile").onmousedown = (e) => {
         if(e.button == 0 && deck_pile.length)   //left click: draw
         {
@@ -118,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         else if(e.button == 2)   //right click: view
         {
-            document.getElementById("deck-view").style.visibility = "visible";
+            deck_view.style.visibility = "visible";
         }
 
         else if(e.button == 1)
@@ -139,15 +145,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    //View discard pile cards
+    //View or reset discard pile cards
     document.querySelector("#discard-pile").onmousedown = (e) => {
         if(e.button == 2)   //right click: view
         {
-            document.getElementById("discard-view").style.visibility = "visible";
+            discard_view.style.visibility = "visible";
         }
-        else if(e.button == 1)   //middle click: reset discard pile
+        else if(e.button == 1)   //middle click: reset deck
         {
-            card = discard_pile.shift();
+            let card = discard_pile.shift();
             while(card !== undefined){
                 deck_pile.push(card);
                 insertCardElement(deck_view, card);
@@ -211,6 +217,29 @@ document.addEventListener("DOMContentLoaded", () => {
     discard_view.onclick = function(){
         this.style.visibility = "hidden";
     };
+
+    //Option buttons
+    document.getElementById("show-deck").onmousedown = ()=>{
+        deck_view.style.visibility = "visible";
+    }
+
+    document.getElementById("show-graveyard").onmousedown = ()=>{
+        discard_view.style.visibility = "visible";
+    }
+
+    document.getElementById("shuffle-deck").onmousedown = ()=>{
+        shuffleArray(deck_pile);
+    }
+
+    document.getElementById("reset-graveyard").onmousedown = ()=>{
+        let card = discard_pile.shift();
+        while(card !== undefined){
+            deck_pile.push(card);
+            insertCardElement(deck_view, card);
+            card = discard_pile.shift();
+        }
+        discard_view.innerHTML= "<h1>Discard Pile</h1>";
+    }
 
 })
 
@@ -321,7 +350,6 @@ function insertCardElement(element, card){
 function prepareDescription(description){
     description = description.replace(/(?:\r\n|\r|\n)/g, '<br>');
     description = description.replaceAll("dice", '<img class="icon" style="background-color:unset; padding:unset;" src="/static/other_images/dice.png" alt="dice">');
-    console.log(description);
 
     unique_icons.forEach(icon => {
         description = description.replaceAll(icon, `
@@ -346,4 +374,12 @@ function shuffleArray(array) {
 function removeDuplicates(arr) {
     return arr.filter((item,
         index) => arr.indexOf(item) === index);
+}
+
+//detects if the device is a touch device (tablet or phone), for styling purposes
+function isTouchDevice() {
+    if(window.matchMedia("(any-pointer: coarse)").matches) {
+        // touchscreen
+        return true;
+    }
 }

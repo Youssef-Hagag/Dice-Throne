@@ -4,12 +4,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'other_images/favicon.ico/' %}" />
     {% block head %}
     {% endblock %}
 </head>
 <body>
+    <div id="switch-to-landscape">
+        <p>Please Switch to Landscape Mode</p>
+        <img src="{% static 'other_images/orientation.png' %}" alt="Deck">
+    </div>
+
     {% block body %}
     {% endblock %}
 </body>

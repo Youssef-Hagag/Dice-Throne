@@ -1,6 +1,7 @@
 * { 
     -moz-box-sizing: border-box; 
     -webkit-box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box; 
     font-family: sans-serif;
     color: #EEEEEE;
@@ -10,8 +11,14 @@
 h1{
     width: 100%;
     text-align: center;
-    font-size: 40px;
+    font-size: 40px !important;
     font-weight: 600;
+}
+
+#index-container > h2{
+    font-size: 30px !important;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
 body{
@@ -24,7 +31,9 @@ body{
 
 .container{
     display: grid;
+    position: relative;
     height: 100vh;
+    min-height: 100%;
     width: 100vw;
     grid-template-columns: 25vw 50vw 25vw;
     grid-template-rows: 60vh auto 210px;
@@ -82,20 +91,16 @@ body{
     height: 50vh;
     width: 15vw;
     border-radius: 10px;
-    font-size: 40px;
     margin-bottom: 20px;
 }
 
 .hero-choice:hover{
-    border-style: solid;
-    border-color: #091428;
-    border-width: 20px;
-    border-radius: 30px;
-    font-size: 33px;
+    filter: brightness(1.2);
 }
 
 .hero-choice img{
-    height: 75%;
+    height: 35vh;
+    width: 11vw;
     border-radius: 10px;
     border: 5px solid #091428;
     margin-top: 15px;
@@ -105,11 +110,11 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 20%;
+    font-size: 30px !important;
+    height: 15vh;
     color: #091428;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #EEEEEE;
-    font-size: unset;
 }
 
 #index-container > h1, #index-container > h2{
@@ -145,7 +150,9 @@ a{
 }
 
 .enlarge{
-    position: fixed;
+    position: absolute;
+    grid-row: 1/4;
+    grid-column: 1/4;
     width: 100vw;
     height: 100vh;
     font-size: 11.5px;
@@ -177,15 +184,24 @@ a{
     vertical-align: middle;
 }
 
-#upgrade-choice{
+.options{
     display: flex;
+    flex-direction: column;
     margin-top: auto;
     align-items: center;
     justify-content: center;
     grid-row: 1/2;
     grid-column: 3/4;
-    width: 100%;
-    height: 20%;
+    width: 70%;
+    margin-top: 25vh;
+    margin-left: 15%;
+}
+
+#upgrade-choice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 #slot-choice{
@@ -285,7 +301,7 @@ a{
     height: 4vw;
     border-style: solid;
     transform: scale(0.9) translateY(15px);
-    font-size: 1.5em;
+    font-size: 1vw;
     font-weight: 700;
     border-radius: 5px;
     padding: 4px;
@@ -316,13 +332,15 @@ a{
 
 .icon{
     position: absolute;
-    width: 2vw;
-    height: 2vw;
+    width: 25px;
+    height: 25px;
     bottom: 6px;
     right: 6px;
 }
 
 .selected-dice .icon{
+    width: 30px;
+    height: 30px;
     bottom: 4px;
     right: 4px;
 }
@@ -331,35 +349,36 @@ a{
 #tokens-container{
     display: flex;
     flex-direction: column;
-    gap: 1vh 0;
+    gap: 1.5vh 0;
     grid-row: 1/2;
     grid-column: 1/2;
     margin-top: 10px;
-    width: 25vw;
+    width: 23vw;
     height: 40vh;
 }
 
 .token-container{
     display: flex;
-    width: 12vw;
-    height: 5vh;
+    width: 23vw;
+    height: 4vh;
     align-items: center;
     justify-content: flex-start;
 }
 
 .token{
-    width: 2.2vw;
-    height: 2.2vw;
+    width: 4vw;
+    height: 4vh;
     text-align: center;
-    border: solid #EEEEEE;
+    border: 2px solid #EEEEEE;
     font-size: 20px;
     font-weight: 700;
     background-color: #091428;
     border-radius: 5px;
+    padding-top: 2px;
 }
 
 #tokens-container .button{
-    width: 2vw;
+    width: 4vw;
     height: 2vw;
 }
 
@@ -370,7 +389,7 @@ a{
     text-align: center;
     font-size: 13px;
     margin: 5px;
-    width: 8vw;
+    width: 20vw;
     font-weight: 600;
     height: 100%;
     background-color: #091428;
@@ -383,18 +402,17 @@ a{
 
 #token-info{
     position: relative;
-    width: 100%;
-    height: 28vh;
+    width: 23vw;
+    height: 23vh;
     font-size: 16px;
     background-color: #091428;
-    grid-row: 1/3;
-    grid-column: 1/2;
-    margin-top: auto;
-    margin-bottom: 5px;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #EEEEEE;
     overflow-y: scroll;
+    position: absolute;
+    bottom: 220px;
+    left: 0px;
 }
 
 #token-description{
@@ -428,7 +446,8 @@ a{
     margin-left: 15%;
     height: 210px;
     grid-column: 1/4;
-    margin-top: auto;
+    position: absolute;
+    bottom: 0px;
 }
 
 .card{
@@ -439,6 +458,7 @@ a{
     border-style: solid;
     border-radius: 5px;
     padding-top: 5px;
+    overflow: scroll;
 }
 
 .card:hover{
@@ -465,7 +485,7 @@ a{
     display: table;
     text-align: center;
     width: 100%;
-    height: 80%;
+    height: 75%;
     font-size: 14px;
 }
 
@@ -531,15 +551,13 @@ hr{
 
 #deck-pile, #discard-pile{
     display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     bottom: 10px;
     right: 0;
     padding: unset;
     background-color: black;
     border-style: none;
+    overflow: unset;
 }
 
 #discard-pile{
@@ -577,4 +595,101 @@ hr{
 #deck-view > h1, #discard-view > h1{
     margin-top: 20px;
     margin-bottom: 30px;
+}
+
+/*------------------------------------------------------- Mobile Responsiveness ---------------------------------------------------------*/
+
+@media screen and (max-width: 1200px) {
+    *{
+        font-size: 10px !important;
+    }
+
+    .hero-choice h1{
+        font-size: 20px !important;
+    }
+
+    #hand{
+        height: 135px;
+    }
+
+    .card{
+        width: 100px;
+        height: 125px;
+        animation: unset;
+    }
+
+    #deck-pile:hover, #discard-pile:hover{
+        padding: unset;
+    }
+
+    .card:hover{
+        transform: unset;
+    }
+
+    #tokens-container label {
+        font-size: 6px !important;
+    }
+
+    #token-info{
+        position: absolute;
+        bottom: 140px;
+        left: 0px;
+    }
+
+    .upgrade p{
+        font-size: 3px !important;
+    }
+
+    .card .icon, .upgrade .icon, #token-description .icon{
+        width: 10px;
+        height: 10px;
+    }
+    
+    .upgrade .icon{
+        width: 7.5px;
+        height: 7.5px;
+    }
+
+    .dice{
+        padding: 2px;
+    }
+
+    .icon{
+        width: 15px;
+        height: 15px;
+    }
+    
+    .selected-dice .icon{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+#switch-to-landscape{
+    width: 100%;
+    height: 150%;
+    display: none;
+    background-color: #091428;
+    z-index: 999;
+    position: fixed;
+}
+
+#switch-to-landscape p{
+    font-size: 50px !important;
+}
+
+#switch-to-landscape img{
+    height: 30vw;
+    width: 30vw;
+}
+
+@media (orientation: portrait){
+    #switch-to-landscape{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 90%;
+        align-items: center;
+        text-align: center;
+    }
 }
