@@ -1,6 +1,6 @@
 # Dice Throne Online - Project 5
 
-Dice Throne Online is a simple Interface for playing the popular dice game https://shop.dicethrone.com, built using the Python web-framework Django for CS50W's final Project Capstone.
+Dice Throne Online is a simple Interface for playing the popular dice game [Dice Throne](https://www.dicethrone.com/). Built using the html, css, javascript and Python's web-framework Django for CS50W's final Project Capstone.
 
 ## Features
 
@@ -22,14 +22,14 @@ Dice Throne Online is a simple Interface for playing the popular dice game https
 This project is completely different from any other project I have done throughout the course, and yet it touches on everything I learned and is also 
 a fun project that I enjoyed every moment of creating.
 
-The motivation for this project was originally just to play the game with a friend of mine. We don't have Dice Throne in our local area, and shipping it
+The motivation for this project was originally just to play the game with my friend. We don't have Dice Throne in our local area, and shipping it
 to where we live would be too costly. So I had this fun idea of creating a website that we can then stream to each other on discord as if we were playing
 the game together in real time.
 
 In terms of complexity, most of the complexity in this project lies in 2 points: 
 1. Player interaction handling using javascript, since the player can draw cards, play them, view them in the deck or the discard pile, roll or lock dice
    and upgrade any of the skills on the hero board. 
-2. The amount of customization for each hero, each hero has their own hero board, deck, set of dice with different icons, set of tokens (effects), in addition
+2. The vast amount of customization for each hero, each hero has their own hero board, deck, set of dice with different icons, set of tokens (effects), in addition
    to their own theme color (showing in the selection page and on their set of dice)
 
 ## Files & Directories
@@ -63,8 +63,7 @@ Some django files that were auto generated are not mentioned like `tests.py` or 
 
 ## How to play
 
-If you are interested to learn how to play Dice Throne yourself, feel free to check out their [website](https://shop.dicethrone.com), or go directly to
-their [Rulebook](https://cdn.shopify.com/s/files/1/0045/4013/7562/files/Dice_Throne_Rulebook_-_v2.3.2_-_2022.02.28.pdf?v=1651083636)
+If you are interested in learning how to play Dice Throne yourself, check out the game's awesome [Rulebook](https://cdn.shopify.com/s/files/1/0045/4013/7562/files/Dice_Throne_Rulebook_-_v2.3.2_-_2022.02.28.pdf?v=1651083636) to learn everything.
 
 ## Credits
 
