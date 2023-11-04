@@ -26,11 +26,15 @@ The motivation for this project was originally just to play the game with my fri
 to where we live would be too costly. So I had this fun idea of creating a website that we can then stream to each other on discord as if we were playing
 the game together in real time.
 
-In terms of complexity, most of the complexity in this project lies in 2 points: 
+In terms of complexity, most of the complexity in this project lies in 3 points: 
 1. Player interaction handling using javascript, since the player can draw cards, play them, view them in the deck or the discard pile, roll or lock dice
-   and upgrade any of the skills on the hero board. 
-2. The vast amount of customization for each hero, each hero has their own hero board, deck, set of dice with different icons, set of tokens (effects), in addition
-   to their own theme color (showing in the selection page and on their set of dice)
+   and upgrade any of the skills on the hero board.
+2. Styling, and then making the application mobile responsive, those 2 things were definitely the most time consuming parts of the project.
+3. The vast amount of customization for heroes. Each hero has their own hero board, deck, set of dice with different icons, set of tokens (effects), in addition
+   to their own theme color (showing in the selection page and on their set of dice).
+
+And while it may not be the most complex final project idea out there, I personally think it has enough complexity and creativity, while also being an project that 
+I had a lot of fun developing, will have a lot of fun using, and am really proud of how it turned out.
 
 ## Files & Directories
 
